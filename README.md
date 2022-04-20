@@ -6,7 +6,7 @@ React TO-DO List Make Simple your daily routine.is a task management app to help
  ##### https://rudrakshabillore1.github.io/todo-list.github.io/
 
 
-## [Demo](https://rudrakshabillore1.github.io/todo-list.github.io
+## [Demo](https://rudrakshabillore1.github.io/todo-list.github.io/)
  
  
 <img src = "https://user-images.githubusercontent.com/102648499/164241368-504d460c-c06c-4fdb-862b-42686cf4e80d.gif" alt = "gif" />
