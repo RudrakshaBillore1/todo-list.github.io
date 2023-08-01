@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
@@ -6,7 +6,33 @@ import Todo from './Todo';
 function TodoList() {
 
   
-  const [todos, setTodos] = useState([]);
+ 
+  const [todos, setTodos] = useState(() => {
+    // get the todos from localstorage
+    const savedTodos = localStorage.getItem("todos");
+    // if there are todos stored
+    if (savedTodos) {
+      // return the parsed the JSON object back to a javascript object
+      return JSON.parse(savedTodos);
+      // otherwise
+    } else {
+      // return an empty array
+      return [];
+    }
+  });
+
+   // need state to keep track of the value in the input
+   const [todo, setTodo] = useState("");
+
+   // useEffect to run once the component mounts
+   useEffect(() => {
+    // localstorage only support storing strings as keys and values
+    // - therefore we cannot store arrays and objects without converting the object
+    // into a string first. JSON.stringify will convert the object into a JSON string
+    localStorage.setItem("todos", JSON.stringify(todos));
+    // add the todos as a dependancy because we want to update
+    // localstorage anytime the todos state changes
+  }, [todos]);
 
   const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
